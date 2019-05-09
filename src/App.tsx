@@ -1,12 +1,13 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import Button from '@material-ui/core/Button';
+import TodoList from './todo-list/TodoList';
+import TitleSheet from './TitleSheet';
 
 const App: React.FC = () => {
   return (
     <div className="App">
-      <Button>Hello World</Button>
+      <TitleSheet />
+      <TodoList />
     </div>
   );
 }
