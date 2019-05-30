@@ -21,24 +21,44 @@ const style = {
   },
 };
 
-const App = (props: AppProps): JSX.Element => {
-  return (
-    <div className={props.classes.root}>
-      <Grid container direction="column">
-        <Grid item>
-          <TitleSheet />
+export interface ITodoListItem {
+  id: number;
+  text: string;
+}
+
+// Typescript
+const initialItems:ITodoListItem[] = [
+  {id: 0, text: "Walk the cat"},
+  {id: 1, text: "Eat bread"},
+  {id: 2, text: "Renew passport"},
+  {id: 3, text: "Drink water"}
+];
+
+class App extends React.Component<AppProps> {
+
+  state = {
+    items: initialItems
+  }
+
+  render(){
+    return (
+      <div className={this.props.classes.root}>
+        <Grid container direction="column">
+          <Grid item>
+            <TitleSheet />
+          </Grid>
+          
+          <Grid item>
+            <TodoList items={this.state.items} />
+          </Grid>
+          
+          <Grid item>
+            <AddItem />
+          </Grid>
         </Grid>
-        
-        <Grid item>
-          <TodoList />
-        </Grid>
-        
-        <Grid item>
-          <AddItem />
-        </Grid>
-      </Grid>
-    </div>
-  );
+      </div>
+    );
+  }
 }
 
 export default withStyles(style)(App);

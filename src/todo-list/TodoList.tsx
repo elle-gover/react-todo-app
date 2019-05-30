@@ -3,27 +3,19 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import TodoListItem from './TodoListItem';
+import { ITodoListItem } from '../App';
 
-interface ITodoListItem {
-    id: number;
-    text: string;
+type TodoListProps = {
+    items: ITodoListItem[]
 }
 
-// Typescript
-const items:ITodoListItem[] = [
-    {id: 0, text: "Walk the cat"},
-    {id: 1, text: "Eat bread"},
-    {id: 2, text: "Renew passport"},
-    {id: 3, text: "Drink water"}
-];
-
-class TodoList extends React.Component {
+class TodoList extends React.Component<TodoListProps> {
 
     render() {
         return ( // JSX
             <div className="todo-list-container">
                 <List>
-                  {items.map((item) => {
+                  {this.props.items.map((item) => {
                       return <TodoListItem text={item.text} />
                   })}
                 </List>
